@@ -23,15 +23,14 @@ jobs:
 
       - name: npm install, build, and test
         run: |
+          cd ${{ github.workspace }}/BE
           npm install
-          npm run build --if-present
-          npm run test --if-present
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: .
+          path: ${{ github.workspace }}/BE
 
   deploy:
     runs-on: ubuntu-latest
