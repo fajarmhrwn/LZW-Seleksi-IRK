@@ -23,14 +23,14 @@ jobs:
 
       - name: npm install, build, and test
         run: |
-          cd ${{ github.workspace }}/BE
+          cd ${{ github.workspace }}/FE
           npm install
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: ${{ github.workspace }}/BE
+          path: ${{ github.workspace }}/FE
 
   deploy:
     runs-on: ubuntu-latest
