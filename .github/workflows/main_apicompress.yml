@@ -26,15 +26,16 @@ jobs:
 
       - name: npm install, build, and test
         run: |
+          cd .. # Move back to the root directory
+          cd BE # Enter the BE directory
           npm install
           npm run build --if-present
           npm run test --if-present
-
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: .
+          path: BE
 
   deploy:
     runs-on: ubuntu-latest
