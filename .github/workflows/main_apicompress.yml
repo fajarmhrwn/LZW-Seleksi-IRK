@@ -22,12 +22,13 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v1
         with:
-          node-version: '18.x'
+          node-version: '14.x'
+
+      - name: Print Current Directory
+        run: node -e "console.log(__dirname)"
 
       - name: npm install, build, and test
         run: |
-          cd .. # Move back to the root directory
-          cd BE # Enter the BE directory
           npm install
           npm run build --if-present
           npm run test --if-present
@@ -35,7 +36,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: BE
+          path: .
 
   deploy:
     runs-on: ubuntu-latest
