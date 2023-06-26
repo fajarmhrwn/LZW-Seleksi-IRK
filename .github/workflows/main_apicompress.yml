@@ -15,9 +15,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      
-      - name: Change Directory
-        run: cd BE
 
       - name: Set up Node.js version
         uses: actions/setup-node@v1
@@ -29,15 +26,16 @@ jobs:
 
       - name: npm install, build, and test
         run: |
-          cd ../BE # Move to the BE directory
+          cd ${{ github.workspace }}/BE
           npm install
           npm run build --if-present
           npm run test --if-present
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: ../BE # Include the BE directory for the artifact
+          path: ${{ github.workspace }}/BE
 
 
   deploy:
