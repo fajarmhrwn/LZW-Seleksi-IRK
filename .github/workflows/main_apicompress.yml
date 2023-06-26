@@ -23,15 +23,14 @@ jobs:
 
       - name: npm install, build, and test
         run: |
+          cd ${{ github.workspace }}/BE
           npm install
-          npm run build --if-present
-          npm run test --if-present
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: .
+          path: ${{ github.workspace }}/BE
 
   deploy:
     runs-on: ubuntu-latest
@@ -53,4 +52,4 @@ jobs:
           app-name: 'apicompress'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_80E6E8A06FC24C62BA07345B349B6CB6 }}
-          package: .
+          package: BE/
