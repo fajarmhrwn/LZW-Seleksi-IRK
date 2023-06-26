@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import {useState,useEffect} from 'react'
 import { useStateContext } from '../contexts/ContextProvider'
 import { Navigate } from "react-router-dom";
 import Navbars from '../components/Navbar';
@@ -15,7 +15,8 @@ interface HistoryData {
 }
 
 const History = () => {
-    const {currentUser, token} = useStateContext();
+    const {token} = useStateContext();
+    const [isLoading, setIsLoading] = useState(false);
     if(!token){
         return (
             <Navigate to="/login" />
@@ -29,10 +30,12 @@ const History = () => {
         if(storedUser){
             user = JSON.parse(storedUser)
         }
-        axios.post(`http://localhost:3000/history`,{
+        console.log(user.email)
+        axios.post(`https://apicompress.azurewebsites.net/history`,{
             email: user.email
         }).then((res) => {
             setData(res.data)
+            setIsLoading(true)
             console.log(res.data)
         }
         ).catch((err) => {
@@ -64,6 +67,9 @@ const History = () => {
       </Table.Head>
       <Table.Body className="divide-y">
         {
+            !isLoading ? <div>
+                Loading...
+            </div> :
             data?.map((item) => {
                 return (
                     <Table.Row>

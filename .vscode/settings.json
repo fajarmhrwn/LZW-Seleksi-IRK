@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/94f51c7b-4ccc-4298-ba64-833edf23f7a1/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/apicompress",
+    "appService.deploySubpath": "BE"
+}

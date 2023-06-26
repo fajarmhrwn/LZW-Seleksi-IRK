@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 
 import { Dropdown, Navbar, Avatar } from 'flowbite-react';
 import { useStateContext } from '../contexts/ContextProvider';
@@ -14,6 +14,7 @@ export default function Navbars() {
       const storedUser = localStorage.getItem('currentUser');
       if (storedUser) {
         setUser(JSON.parse(storedUser));
+        setToken(localStorage.getItem('ACCESS_TOKEN'),JSON.parse(storedUser));
       }
     }, [setUser]);
   return (

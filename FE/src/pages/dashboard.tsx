@@ -41,7 +41,7 @@ const input = () => {
             // compress text
             if(extension){
                 // compress with extension
-                axios.post('http://localhost:3000/encoder-extension', {
+                axios.post('https://apicompress.azurewebsites.net/encoder-extension', {
                     data: text,
                     email: currentUser.email
                 }).then((res) => {
@@ -50,7 +50,7 @@ const input = () => {
                     console.log(err)
                 })
             }else{
-                axios.post('http://localhost:3000/encoder', {
+                axios.post('https://apicompress.azurewebsites.net/encoder', {
                     data: text,
                     email: currentUser.email
                 }).then((res) => {
@@ -63,7 +63,7 @@ const input = () => {
             // compress file
             if(extension){
                 // compress with extension
-                axios.post('http://localhost:3000/encoder-extension', {
+                axios.post('https://apicompress.azurewebsites.net/encoder-extension', {
                     data: file,
                     email: currentUser.email
                 }).then((res) => {
@@ -73,7 +73,7 @@ const input = () => {
                 })
             }else{
                 // compress without extension
-                axios.post('http://localhost:3000/encoder', {
+                axios.post('https://apicompress.azurewebsites.net/encoder', {
                     data: file,
                     email: currentUser.email
                 }).then((res) => {
@@ -93,7 +93,7 @@ const input = () => {
             // decompress text
             if(extension){
                 // decompress with extension
-                axios.post('http://localhost:3000/decoder-extension', {
+                axios.post('https://apicompress.azurewebsites.net/decoder-extension', {
                     data: text,
                     email: currentUser.email
                 }).then((res) => {
@@ -103,7 +103,7 @@ const input = () => {
                 })
             }else{
                 // decompress without extension
-                axios.post('http://localhost:3000/decoder', {
+                axios.post('https://apicompress.azurewebsites.net/decoder', {
                     data: text,
                     email: currentUser.email
                 }).then((res) => {
@@ -116,7 +116,7 @@ const input = () => {
             // decompress file
             if(extension){
                 // decompress with extension
-                axios.post('http://localhost:3000/decoder-extension', {
+                axios.post('https://apicompress.azurewebsites.net/decoder-extension', {
                     data: file,
                     email: currentUser.email
                 }).then((res) => {
@@ -126,7 +126,7 @@ const input = () => {
                 })
             }else{
                 // decompress without extension
-                axios.post('http://localhost:3000/decoder', {
+                axios.post('https://apicompress.azurewebsites.net/decoder', {
                     data: file,
                     email: currentUser.email
                 }).then((res) => {

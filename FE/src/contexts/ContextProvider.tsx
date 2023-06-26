@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 interface StateContextProps {
   currentUser: any;
@@ -46,14 +46,6 @@ export const ContextProvider: React.FC<MyComponentProps> = ({ children }) => {
       setNotificationState("");
     }, 5000);
   };
-
-  useEffect(() => {
-    // Check if user data exists in localStorage on component mount
-    const storedUser = localStorage.getItem('currentUser');
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
-  });
 
   return (
     <StateContext.Provider
