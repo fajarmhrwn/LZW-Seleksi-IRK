@@ -52,4 +52,4 @@ jobs:
           app-name: 'apicompress'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_80E6E8A06FC24C62BA07345B349B6CB6 }}
-          package: BE/
+          package: ${{ github.workspace }}/BE
