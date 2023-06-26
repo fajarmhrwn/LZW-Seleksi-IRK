@@ -25,6 +25,7 @@ jobs:
         run: |
           cd ${{ github.workspace }}/FE
           npm install
+          npm run build
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
