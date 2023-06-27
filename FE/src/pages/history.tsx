@@ -68,7 +68,7 @@ const History = () => {
       <Table.Body className="divide-y">
         {
             !isLoading ? <div>
-                Loading...
+                Loading..
             </div> :
             data?.map((item) => {
                 return (
