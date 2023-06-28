@@ -11,7 +11,7 @@ const database = module.exports = () =>{
     useUnifiedTopology: true
   }
   try{
-    mongoose.connect(`${process.env.DB_URL}`,connectionParams);
+    mongoose.connect(`mongodb+srv://fajarherawan:${process.env.DB_PASS}.kyjredq.mongodb.net/?retryWrites=true&w=majority`,connectionParams);
     console.log('Connected to database');
   }catch(err){
     console.log('Could not connect to database');
