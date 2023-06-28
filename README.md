@@ -13,11 +13,11 @@
 6. [Usage](#usage)
 7. [Proses](#proses)
 8. [Screenshots](#screenshots)
-9. [Structure](#structure)
-10. [Project Status](#project-status)
-11. [Room for Improvement](#room-for-improvement)
-12. [Acknowledgements](#acknowledgements)
-13. [Contact](#contact)
+9. [Project Status](#project-status)
+10. [Room for Improvement](#room-for-improvement)
+11. [Acknowledgements](#acknowledgements)
+12. [Contact](#contact)
+13. [Link](#link)
 
 <a name="general-information"></a>
 
@@ -146,4 +146,8 @@ Peningkatan yang dapat dilakukan:
   Kontak : 13521080@std.stei.itb.ac.id<br/>
   2023
 </h4>
+
+<a name="link"></a>
+## Link
+https://lzw-seleksi-irk-fajarmhrwn.vercel.app
 <hr>
