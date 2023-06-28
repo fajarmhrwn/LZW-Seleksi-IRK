@@ -40,6 +40,34 @@ function buildHuffmanCodes(node, currentCode, huffmanCodes) {
   buildHuffmanCodes(node.right, currentCode + '1', huffmanCodes);
 }
 
+function convertHuffmanTreeToJSON(node) {
+  if (!node.left && !node.right) {
+    return {
+      char: node.char,
+      freq: node.freq,
+    };
+  }
+  return {
+    freq: node.freq,
+    left: convertHuffmanTreeToJSON(node.left),
+    right: convertHuffmanTreeToJSON(node.right),
+  };
+}
+
+function convertJSONToHuffmanTree(jsonTree) {
+  if (!jsonTree.left && !jsonTree.right) {
+    return {
+      char: jsonTree.char,
+      freq: jsonTree.freq,
+    };
+  }
+  return {
+    freq: jsonTree.freq,
+    left: convertJSONToHuffmanTree(jsonTree.left),
+    right: convertJSONToHuffmanTree(jsonTree.right),
+  };
+}
+
 function huffmanCompress(text) {
   const frequencyTable = buildFrequencyTable(text);
   const huffmanTree = buildHuffmanTree(frequencyTable);
@@ -53,6 +81,8 @@ function huffmanCompress(text) {
 }
 
 function huffmanDecompress(compressedText, huffmanTree) {
+  console.log('asas')
+  console.log(huffmanTree)
   let decompressedText = '';
   let currentNode = huffmanTree;
   for (let i = 0; i < compressedText.length; i++) {
@@ -168,4 +198,4 @@ function decompress(data){
 
 
 
-module.exports = {compress,decompress,encodeRLE,decodeRLE,huffmanCompress,huffmanDecompress}
+module.exports = {compress,decompress,encodeRLE,decodeRLE,huffmanCompress,huffmanDecompress,convertHuffmanTreeToJSON,convertJSONToHuffmanTree,convertHuffmanTreeToJSON,buildFrequencyTable,buildHuffmanTree,buildHuffmanCodes}

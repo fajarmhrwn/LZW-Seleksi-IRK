@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const { compress, decompress,encodeRLE,decodeRLE,huffmanCompress,huffmanDecompress } = require('./algorithm.js');
+const { compress, decompress,encodeRLE,decodeRLE,huffmanCompress,huffmanDecompress,convertHuffmanTreeToJSON,convertJSONToHuffmanTree,buildFrequencyTable,buildHuffmanTree } = require('./algorithm.js');
 const mongoose = require('mongoose');
 
 const database = module.exports = () =>{
@@ -32,6 +32,42 @@ const dataSchema = new Schema({
   date: Date,
   time: String
 });
+
+const treeSchema = new Schema({
+  email: String,
+  tree: Object,
+  input: String,
+  output: String,
+})
+
+// create model
+const Tree = mongoose.model('Tree', treeSchema);
+
+// insert data
+const insertTree = async (email, tree, input, output) => {
+  const tre = new Tree({
+    email: email,
+    tree: tree,
+    input: input,
+    output: output
+  });
+
+  await tre.save();
+};
+
+// get data
+const getTree = async (email,output) => {
+  try {
+    const result = await Tree.find({ email: email, output: output });
+    console.log(result);
+    const data = result.map((item) => item.toObject());
+    return data;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};
+
 
 const Data = mongoose.model('Data', dataSchema);
 
@@ -92,24 +128,39 @@ app.post('/decoder', (req, res) => {
 
 app.post('/encoder-extension', (req, res) => {
     const data = req.body.data;
-    insertData(req.body.email, data, compress(encodeRLE(data)), 'encode-extension', new Date(), new Date().toLocaleTimeString()).then(
+    insertData(req.body.email, data, compress(huffmanCompress(data)), 'encode-extension', new Date(), new Date().toLocaleTimeString()).then(
       (result) => {
-        console.log(result);
         res.send(compress(huffmanCompress(data)));
       }
     ).catch((err) => {
       console.log(err);
     });
+    const frequencyTable = buildFrequencyTable(data);
+    const huffmanTree = buildHuffmanTree(frequencyTable);
+    const huffmanJson = convertHuffmanTreeToJSON(huffmanTree);
+    insertTree(req.body.email, huffmanJson, data, huffmanCompress(data)).then((result) => {
+      console.log(result);
+    }).catch((err) => {
+      console.log(err);
+    }
+    );
 });
 
 app.post('/decoder-extension', (req, res) => {
     const data = req.body.data;
-    insertData(req.body.email, data, decodeRLE(decompress(data)), 'decode-extension', new Date(), new Date().toLocaleTimeString()).then((result) => {
-      console.log(result);
-      res.send(huffmanDecompress(decompress(data)));
+    console.log(decompress(data));
+
+    getTree(req.body.email, decompress(data)).then((result) => {
+      const huffmanTree = convertJSONToHuffmanTree(result[0].tree);
+      insertData(req.body.email, data, huffmanDecompress(decompress(data),huffmanTree), 'decode-extension', new Date(), new Date().toLocaleTimeString()).then((result) => {
+        res.send(huffmanDecompress(decompress(data),huffmanTree));
+      }).catch((err) => {
+        console.log(err);
+      });
     }).catch((err) => {
       console.log(err);
     });
+
       
 });
 
