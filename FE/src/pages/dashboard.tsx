@@ -41,7 +41,7 @@ const input = () => {
             // compress text
             if(extension){
                 // compress with extension
-                axios.post('https://apicompress.azurewebsites.net/encoder-extension', {
+                axios.post('https://lzw-seleksi-irk.up.railway.app/encoder-extension', {
                     data: text,
                     email: currentUser.email
                 }).then((res) => {
@@ -50,7 +50,7 @@ const input = () => {
                     console.log(err)
                 })
             }else{
-                axios.post('https://apicompress.azurewebsites.net/encoder', {
+                axios.post('https://lzw-seleksi-irk.up.railway.app/encoder', {
                     data: text,
                     email: currentUser.email
                 }).then((res) => {
@@ -63,7 +63,7 @@ const input = () => {
             // compress file
             if(extension){
                 // compress with extension
-                axios.post('https://apicompress.azurewebsites.net/encoder-extension', {
+                axios.post('https://lzw-seleksi-irk.up.railway.app/encoder-extension', {
                     data: file,
                     email: currentUser.email
                 }).then((res) => {
@@ -73,7 +73,7 @@ const input = () => {
                 })
             }else{
                 // compress without extension
-                axios.post('https://apicompress.azurewebsites.net/encoder', {
+                axios.post('https://lzw-seleksi-irk.up.railway.app/encoder', {
                     data: file,
                     email: currentUser.email
                 }).then((res) => {
@@ -93,7 +93,7 @@ const input = () => {
             // decompress text
             if(extension){
                 // decompress with extension
-                axios.post('https://apicompress.azurewebsites.net/decoder-extension', {
+                axios.post('https://lzw-seleksi-irk.up.railway.app/decoder-extension', {
                     data: text,
                     email: currentUser.email
                 }).then((res) => {
@@ -103,7 +103,7 @@ const input = () => {
                 })
             }else{
                 // decompress without extension
-                axios.post('https://apicompress.azurewebsites.net/decoder', {
+                axios.post('https://lzw-seleksi-irk.up.railway.app/decoder', {
                     data: text,
                     email: currentUser.email
                 }).then((res) => {
@@ -116,7 +116,7 @@ const input = () => {
             // decompress file
             if(extension){
                 // decompress with extension
-                axios.post('https://apicompress.azurewebsites.net/decoder-extension', {
+                axios.post('https://lzw-seleksi-irk.up.railway.app/decoder-extension', {
                     data: file,
                     email: currentUser.email
                 }).then((res) => {
@@ -126,7 +126,7 @@ const input = () => {
                 })
             }else{
                 // decompress without extension
-                axios.post('https://apicompress.azurewebsites.net/decoder', {
+                axios.post('https://lzw-seleksi-irk.up.railway.app/decoder', {
                     data: file,
                     email: currentUser.email
                 }).then((res) => {

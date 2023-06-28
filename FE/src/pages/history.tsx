@@ -31,7 +31,7 @@ const History = () => {
             user = JSON.parse(storedUser)
         }
         console.log(user.email)
-        axios.post(`https://apicompress.azurewebsites.net/history`,{
+        axios.post(`https://lzw-seleksi-irk.up.railway.app/history`,{
             email: user.email
         }).then((res) => {
             setData(res.data)
