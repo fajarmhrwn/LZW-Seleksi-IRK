@@ -149,5 +149,5 @@ Peningkatan yang dapat dilakukan:
 
 <a name="link"></a>
 ## Link
-https://lzw-seleksi-irk-fajarmhrwn.vercel.app
+https://lzw-seleksi-irk.vercel.app
 <hr>
