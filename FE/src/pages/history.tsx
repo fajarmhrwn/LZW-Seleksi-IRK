@@ -33,6 +33,11 @@ const History = () => {
         console.log(user.email)
         axios.post(`https://lzw-seleksi-irk.up.railway.app/history`,{
             email: user.email
+        },
+        {
+            headers: {
+                'Authorization': 'Bearer ' + token,
+            }
         }).then((res) => {
             setData(res.data)
             setIsLoading(true)

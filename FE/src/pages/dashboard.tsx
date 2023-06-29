@@ -44,7 +44,12 @@ const input = () => {
                 axios.post('https://lzw-seleksi-irk.up.railway.app/encoder-extension', {
                     data: text,
                     email: currentUser.email
-                }).then((res) => {
+                },
+                        {
+            headers: {
+                'Authorization': 'Bearer ' + token,
+            }
+        }   ).then((res) => {
                     setCompressed(res.data)
                 }).catch((err) => {
                     console.log(err)
@@ -53,7 +58,12 @@ const input = () => {
                 axios.post('https://lzw-seleksi-irk.up.railway.app/encoder', {
                     data: text,
                     email: currentUser.email
-                }).then((res) => {
+                },
+                        {
+            headers: {
+                'Authorization': 'Bearer ' + token,
+            }
+        }   ).then((res) => {
                     setCompressed(res.data)
                 }).catch((err) => {
                     console.log(err)
@@ -66,7 +76,12 @@ const input = () => {
                 axios.post('https://lzw-seleksi-irk.up.railway.app/encoder-extension', {
                     data: file,
                     email: currentUser.email
-                }).then((res) => {
+                },
+                        {
+            headers: {
+                'Authorization': 'Bearer ' + token,
+            }
+        }   ).then((res) => {
                     setCompressed(res.data)
                 }).catch((err) => {
                     console.log(err)
@@ -76,7 +91,12 @@ const input = () => {
                 axios.post('https://lzw-seleksi-irk.up.railway.app/encoder', {
                     data: file,
                     email: currentUser.email
-                }).then((res) => {
+                },
+                        {
+            headers: {
+                'Authorization': 'Bearer ' + token,
+            }
+        }   ).then((res) => {
                     setCompressed(res.data)
                 }).catch((err) => {
                     console.log(err)
@@ -96,7 +116,12 @@ const input = () => {
                 axios.post('https://lzw-seleksi-irk.up.railway.app/decoder-extension', {
                     data: text,
                     email: currentUser.email
-                }).then((res) => {
+                },
+                        {
+            headers: {
+                'Authorization': 'Bearer ' + token,
+            }
+        }   ).then((res) => {
                     setCompressed(res.data)
                 }).catch((err) => {
                     console.log(err)
@@ -106,7 +131,12 @@ const input = () => {
                 axios.post('https://lzw-seleksi-irk.up.railway.app/decoder', {
                     data: text,
                     email: currentUser.email
-                }).then((res) => {
+                },
+                        {
+            headers: {
+                'Authorization': 'Bearer ' + token,
+            }
+        }   ).then((res) => {
                     setCompressed(res.data)
                 }).catch((err) => {
                     console.log(err)
@@ -119,7 +149,12 @@ const input = () => {
                 axios.post('https://lzw-seleksi-irk.up.railway.app/decoder-extension', {
                     data: file,
                     email: currentUser.email
-                }).then((res) => {
+                },
+                        {
+            headers: {
+                'Authorization': 'Bearer ' + token,
+            }
+        }   ).then((res) => {
                     setCompressed(res.data)
                 }).catch((err) => {
                     console.log(err)
@@ -129,7 +164,12 @@ const input = () => {
                 axios.post('https://lzw-seleksi-irk.up.railway.app/decoder', {
                     data: file,
                     email: currentUser.email
-                }).then((res) => {
+                },
+                        {
+            headers: {
+                'Authorization': 'Bearer ' + token,
+            }
+        }   ).then((res) => {
                     setCompressed(res.data)
                 }).catch((err) => {
                     console.log(err)

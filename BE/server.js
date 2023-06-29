@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const Middleware = require('./middleware/index.js');
 const { compress, decompress,encodeRLE,decodeRLE,huffmanCompress,huffmanDecompress,convertHuffmanTreeToJSON,convertJSONToHuffmanTree,buildFrequencyTable,buildHuffmanTree } = require('./algorithm.js');
 const mongoose = require('mongoose');
 
@@ -102,8 +103,10 @@ const app = express();
 const port = process.env.PORT || 3000; // Use the PORT environment variable or default to 3000
 
 app.use(cors());
+app.use(Middleware.decodeToken);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
 
 app.post('/encoder', (req, res) => {
     const data = req.body.data;
@@ -166,6 +169,7 @@ app.post('/decoder-extension', (req, res) => {
 
 
 app.post('/history', (req, res) => {
+  console.log(req.headers)
   const email = req.body.email;
   getData(email).then((result) => {
     res.send(result);
